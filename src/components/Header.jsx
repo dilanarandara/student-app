@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
 const Header = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <nav className="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
     <Link to="/" className="navbar-brand">
       Student App
     </Link>
