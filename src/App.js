@@ -10,6 +10,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route path="/students/:id" component={StudentList} />
       <Route path="/students" component={StudentList} />
       <Route path="/subjects" component={SubjectList} />
     </Switch>

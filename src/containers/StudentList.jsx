@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import StudentForm from "../components/StudentForm";
+import { Link } from "react-router-dom";
 
 import { setStudent } from "../actions/Students";
 
@@ -35,23 +36,19 @@ class StudentList extends Component {
             <div className="list-group list-group-flush">
               {this.props.students.map(student => {
                 return (
-                  <div
+                  <Link
                     key={student.id}
                     className="list-group-item list-group-item-action"
-                    onClick={() => this.setStudent(student)}
+                    to={`/students/${student.id}`}
                   >
                     {student.firstName} {student.lastName}
-                  </div>
+                  </Link>
                 );
               })}
             </div>
           </div>
           <div className="col-sm-9">
-            {this.props.selectedStudent ? (
-              <StudentForm />
-            ) : (
-              <div>No Student</div>
-            )}
+            <StudentForm />
           </div>
         </div>
       </React.Fragment>
@@ -59,9 +56,8 @@ class StudentList extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  students: state.students.studentList,
-  selectedStudent: state.students.selectedStudent
+const mapStateToProps = (state, props) => ({
+  students: state.students.studentList
 });
 
 const mapDispatchToProps = dispatch => ({
