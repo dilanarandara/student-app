@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import studentReducer from "../reducers/Students";
+import studentReducer from "../ducks/StudentList";
 import subjectReducer from "../reducers/Subjects";
 
 export default () => {

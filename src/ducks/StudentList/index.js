@@ -1,4 +1,21 @@
-let studentList = [
+import { NAME } from "../../config/consts";
+
+// Constants
+const STATE_NAME = "students";
+const SET_STUDENT = `${NAME}/${STATE_NAME}/SET_STUDENT`;
+
+// Actions
+
+// Set current student
+export const setStudent = student => ({
+  type: SET_STUDENT,
+  student
+});
+
+// Reducers
+let studentList = [];
+//#region student list
+studentList = [
   {
     id: 1,
     firstName: "Dilan",
@@ -71,14 +88,16 @@ let studentList = [
   }
 ];
 
-const studentDefaultReducer = {
+//#endregion
+
+const initialState = {
   studentList,
   selectedStudent: studentList.length ? studentList[0] : undefined
 };
 
-export default (state = studentDefaultReducer, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case "SET_STUDENT":
+    case SET_STUDENT:
       return Object.assign({}, state, {
         selectedStudent: action.student
       });

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import StudentForm from "../components/StudentForm";
 import { Link } from "react-router-dom";
 
-import { setStudent } from "../actions/Students";
+import { setStudent } from "../ducks/StudentList";
 
 class StudentList extends Component {
   setStudent = student => {
