@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import { makeGetSelectedStudent } from "../ducks/StudentList";
+import { createStructuredSelector } from "reselect";
 
 class StudentForm extends Component {
   render() {
@@ -73,10 +75,9 @@ class StudentForm extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  student: state.students.studentList.find(
-    student => student.id === parseInt(props.match.params.id)
-  )
+const mapStateToProps = createStructuredSelector({
+  student: (state, props) =>
+    makeGetSelectedStudent(parseInt(props.match.params.id))(state, props)
 });
 
 export default withRouter(connect(mapStateToProps)(StudentForm));

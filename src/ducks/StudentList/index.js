@@ -1,4 +1,5 @@
 import { NAME } from "../../config/consts";
+import { createSelector } from "reselect";
 
 // Constants
 const STATE_NAME = "students";
@@ -11,6 +12,29 @@ export const setStudent = student => ({
   type: SET_STUDENT,
   student
 });
+
+// Selectors
+const studentListSelector = state => state.students.studentList;
+
+export const makeGetStudentList = () =>
+  createSelector(
+    [studentListSelector],
+    students => students
+  );
+
+export const makeGetSelectedStudent = id =>
+  createSelector(
+    studentListSelector,
+    students => {
+      if (students.length) {
+        if (id) {
+          return students.find(student => student.id === id);
+        }
+        return students[0];
+      }
+      return undefined;
+    }
+  );
 
 // Reducers
 let studentList = [];

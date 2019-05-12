@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import StudentForm from "../components/StudentForm";
 import { Link } from "react-router-dom";
 
-import { setStudent } from "../ducks/StudentList";
+import { setStudent, makeGetStudentList } from "../ducks/StudentList";
+import { createStructuredSelector } from "reselect";
 
 class StudentList extends Component {
   setStudent = student => {
@@ -56,8 +57,8 @@ class StudentList extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  students: state.students.studentList
+const mapStateToProps = createStructuredSelector({
+  students: makeGetStudentList()
 });
 
 const mapDispatchToProps = dispatch => ({
